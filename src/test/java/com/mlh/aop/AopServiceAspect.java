@@ -25,14 +25,16 @@ public class AopServiceAspect {
     }
 
     @Around("targetMethod() && args(args)")
-    public void around(ProceedingJoinPoint joinPoint,String args){
+    public String around(ProceedingJoinPoint joinPoint,String args){
         Object[] argsArr = joinPoint.getArgs();
 
         try {
             Object rtv = joinPoint.proceed(argsArr);
             log.info(rtv.toString());
+            return rtv.toString();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
+        return "shhhh";
     }
 }

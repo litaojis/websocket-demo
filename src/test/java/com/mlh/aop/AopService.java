@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class AopService {
 
     public String doSomething(String args){
+        System.out.println("----");
         log.info("AopService.doSomething(String):"+args);
         return "My return";
     }
